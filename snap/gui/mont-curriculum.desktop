@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Monte Curriculum
+Comment=Premium Resume Builder with Modern Design
+Exec=mont-curriculum
+Icon=${SNAP}/meta/gui/icon.png
+Terminal=false
+Type=Application
+Categories=Office;Utility;
+Keywords=Resume;CV;Career;Curriculum;
+StartupWMClass=mont-curriculum

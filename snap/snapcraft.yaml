@@ -1,0 +1,58 @@
+name: mont-curriculum
+base: core22
+version: '1.0'
+summary: Premium Resume Builder with Modern Design
+description: |
+  Monte Curriculum is a state-of-the-art resume builder application.
+  Create high-impact resumes with a modern glassmorphism interface.
+  Features include a 7-step smart wizard, intelligent data import from PDF/Word,
+  and professional exports in PDF and DOCX formats.
+
+grade: stable
+confinement: strict
+
+architectures:
+  - build-on: amd64
+
+apps:
+  mont-curriculum:
+    command: bin/mont-curriculum
+    extensions: [gnome]
+    desktop: gui/mont-curriculum.desktop
+    plugs:
+      - home
+      - network
+      - opengl
+      - wayland
+      - x11
+
+parts:
+  mont-curriculum:
+    plugin: nil
+    source: .
+    build-packages:
+      - libgtk-3-dev
+      - libwebkit2gtk-4.0-dev
+      - pkg-config
+      - golang-go
+      - npm
+      - nodejs
+    override-build: |
+      # Ensure Go and Wails are available
+      export GOPATH=$HOME/go
+      export PATH=$PATH:$GOPATH/bin
+      
+      # Install Wails CLI
+      go install github.com/wailsapp/wails/v2/cmd/wails@latest
+      
+      # Build the application (Frontend + Backend)
+      wails build
+      
+      # Install the binary
+      mkdir -p $SNAPCRAFT_PART_INSTALL/bin
+      cp build/bin/mont_curriculum $SNAPCRAFT_PART_INSTALL/bin/mont-curriculum
+      
+      # Copy GUI assets
+      mkdir -p $SNAPCRAFT_PART_INSTALL/gui
+      cp snap/gui/icon.png $SNAPCRAFT_PART_INSTALL/gui/icon.png
+      cp snap/gui/mont-curriculum.desktop $SNAPCRAFT_PART_INSTALL/gui/mont-curriculum.desktop
