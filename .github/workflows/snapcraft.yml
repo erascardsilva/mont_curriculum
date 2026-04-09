@@ -30,3 +30,12 @@ jobs:
         with:
           name: mont-curriculum-snap
           path: ${{ steps.snapcraft.outputs.snap }}
+
+      - name: Publish to Snap Store
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: snapcore/action-publish@v1
+        env:
+          SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.SNAPCRAFT_STORE_CREDENTIALS }}
+        with:
+          snap: ${{ steps.snapcraft.outputs.snap }}
+          release: edge
