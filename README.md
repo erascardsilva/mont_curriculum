@@ -15,6 +15,8 @@ Monte Curriculum is a state-of-the-art desktop application built with **Wails**,
 - **🌐 International Ready**: Full support for both **English** and **Portuguese** (BR).
 - **✨ Modern UI**: A beautiful, responsive glassmorphism interface designed for a premium user experience.
 
+[![Get it from the Snap Store](https://snapcraft.io/en/dark/install.svg)](https://snapcraft.io/mont-curriculum)
+
 ---
 
 ## 🛠️ Technology Stack
