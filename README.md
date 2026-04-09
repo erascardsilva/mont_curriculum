@@ -61,7 +61,7 @@ This application is completely free and open-source. If you find it useful, cons
 
 ## ✒️ Author
 
-**Erasmo Cardoso**  
+**[Erasmo Cardoso](https://github.com/erascardsilva)**  
 *Software Engineer | Electronics Specialist*
 
 ---
