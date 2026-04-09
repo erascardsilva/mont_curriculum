@@ -1,6 +1,7 @@
 name: mont-curriculum
 base: core22
 version: '1.0'
+icon: snap/gui/icon.png
 summary: Premium Resume Builder with Modern Design
 description: |
   Monte Curriculum is a state-of-the-art resume builder application.
@@ -19,12 +20,17 @@ apps:
     command: bin/mont-curriculum
     extensions: [gnome]
     desktop: gui/mont-curriculum.desktop
+    environment:
+      GTK_PATH: ${SNAP}/usr/lib/x86_64-linux-gnu/gtk-3.0
+      GTK_USE_PORTAL: 1
+      LD_LIBRARY_PATH: ${SNAP_LIBRARY_PATH}${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
     plugs:
       - home
       - network
       - opengl
       - wayland
       - x11
+      - gpu-2204
 
 parts:
   mont-curriculum:
