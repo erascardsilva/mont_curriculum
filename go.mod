@@ -1,12 +1,14 @@
 module mont_curriculum
 
-go 1.25.0
+go 1.24.1
+
+toolchain go1.24.4
 
 require (
 	github.com/johnfercher/maroto v1.0.0
 	github.com/ledongthuc/pdf v0.0.0-20250511090121-5959a4027728
 	github.com/wailsapp/wails/v2 v2.11.0
-	modernc.org/sqlite v1.48.1
+	modernc.org/sqlite v1.33.1
 )
 
 require (
@@ -17,6 +19,7 @@ require (
 	github.com/godbus/dbus/v5 v5.1.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/websocket v1.5.3 // indirect
+	github.com/hashicorp/golang-lru/v2 v2.0.7 // indirect
 	github.com/jchv/go-winloader v0.0.0-20210711035445-715c2860da7e // indirect
 	github.com/jung-kurt/gofpdf v1.16.2 // indirect
 	github.com/labstack/echo/v4 v4.13.3 // indirect
@@ -39,13 +42,17 @@ require (
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	github.com/wailsapp/go-webview2 v1.0.22 // indirect
 	github.com/wailsapp/mimetype v1.4.1 // indirect
-	golang.org/x/crypto v0.33.0 // indirect
-	golang.org/x/net v0.35.0 // indirect
-	golang.org/x/sys v0.42.0 // indirect
-	golang.org/x/text v0.22.0 // indirect
-	modernc.org/libc v1.70.0 // indirect
+	golang.org/x/crypto v0.36.0 // indirect
+	golang.org/x/exp v0.0.0-20250305212735-054e65f0b394 // indirect
+	golang.org/x/net v0.37.0 // indirect
+	golang.org/x/sys v0.31.0 // indirect
+	golang.org/x/text v0.23.0 // indirect
+	modernc.org/gc/v3 v3.1.2 // indirect
+	modernc.org/libc v1.62.1 // indirect
 	modernc.org/mathutil v1.7.1 // indirect
 	modernc.org/memory v1.11.0 // indirect
+	modernc.org/strutil v1.2.1 // indirect
+	modernc.org/token v1.1.0 // indirect
 )
 
 // replace github.com/wailsapp/wails/v2 v2.11.0 => /home/erasmo/go/pkg/mod
