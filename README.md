@@ -13,40 +13,40 @@ Monte Curriculum is a state-of-the-art desktop application built with **Wails**,
 - **🎨 Premium Templates**: Select from high-end, designer-made layouts.
 - **📈 Pro Exports**: Export your resume in professional PDF (Print Ready) or fully editable DOCX formats.
 - **🌐 International Ready**: Full support for both **English** and **Portuguese** (BR).
-- **✨ Modern UI**: A beautiful, responsive glassmorphism interface designed for a premium user experience.
+- **✨ Modern UI**: Create high-impact professional resumes with a modern glassmorphism interface.
 
-[![Get it from the Snap Store](https://snapcraft.io/en/dark/install.svg)](https://snapcraft.io/mont-curriculum)
-
----
-
-## 🛠️ Technology Stack
-
-- **Backend core**: [Go](https://go.dev/) (Golang)
-- **App Framework**: [Wails v2](https://wails.io/) (Desktop Webview)
-- **Frontend Logic**: [Svelte](https://svelte.dev/)
-- **Bundler**: [Vite](https://vitejs.dev/)
-- **Styling**: Vanilla CSS with Modern Glassmorphism variables.
-- **Database**: SQLite for local data persistence.
+![Go](https://img.shields.io/badge/Go-1.22+-00ADD8?style=for-the-badge&logo=go&logoColor=white)
+![Wails](https://img.shields.io/badge/Wails-v2-E94132?style=for-the-badge&logo=wails&logoColor=white)
+![Svelte](https://img.shields.io/badge/Svelte-3-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-3-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-ready-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![Windows](https://img.shields.io/badge/Windows-ready-0078D4?style=for-the-badge&logo=windows&logoColor=white)
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/mont-curriculum)
 
 ---
 
-## 📦 Getting Started
+## ⬇️ Installation
 
-### Prerequisites
-
-- Go 1.21+
-- Node.js & NPM
-- Wails CLI (`go install github.com/wailsapp/wails/v2/cmd/wails@latest`)
-
-### Building from Source
-
-To generate the redistributable production package, run:
-
+### 🐧 Linux (Recommended)
+Install the official package directly from the Snap Store:
 ```bash
-# Clean and build the binary
-wails build
+sudo snap install mont-curriculum
 ```
 
+### 🪟 Windows
+1. Download the latest `Monte-Curriculum-Installer.exe` from the [Releases](https://github.com/erascardsilva/mont_curriculum/releases) page or the `build/bin/` folder.
+2. Run the installer and follow the on-screen instructions.
+
+### 🛠️ Developer Build (From Source)
+If you have the Go and Wails environment setup:
+```bash
+# Clone the repository
+git clone https://github.com/erascardsilva/mont_curriculum.git
+cd mont_curriculum
+
+# Build for your current platform
+wails build
+```
 The executables will be available in the `build/bin/` directory.
 
 ---

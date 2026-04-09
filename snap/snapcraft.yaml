@@ -24,13 +24,13 @@ apps:
       GTK_PATH: ${SNAP}/usr/lib/x86_64-linux-gnu/gtk-3.0
       GTK_USE_PORTAL: 1
       LD_LIBRARY_PATH: ${SNAP_LIBRARY_PATH}${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+      WEBKIT_DISABLE_COMPOSITING_MODE: 1
     plugs:
       - home
       - network
       - opengl
       - wayland
       - x11
-      - gpu-2204
 
 parts:
   mont-curriculum:
