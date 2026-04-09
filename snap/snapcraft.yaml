@@ -37,16 +37,20 @@ parts:
       - golang-go
       - npm
       - nodejs
+    stage-packages:
+      - libgtk-3-0
+      - libwebkit2gtk-4.0-37
     override-build: |
       # Ensure Go and Wails are available
       export GOPATH=$HOME/go
       export PATH=$PATH:$GOPATH/bin
       
+      # Use a specific Go version if possible, or trust the build environment
       # Install Wails CLI
       go install github.com/wailsapp/wails/v2/cmd/wails@latest
       
       # Build the application (Frontend + Backend)
-      wails build
+      wails build -clean
       
       # Install the binary
       mkdir -p $SNAPCRAFT_PART_INSTALL/bin
