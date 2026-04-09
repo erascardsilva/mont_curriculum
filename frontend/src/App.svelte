@@ -12,9 +12,11 @@
 
   // Sistema de Tradução (i18n)
   let lang = 'pt';
-  let template = 'default';
-  let settings = { language: 'pt', template: 'default', show_photo: true, labels: {} };
-  let showAbout = false; // Novo estado para o modal
+  let template = 'modern';
+  let settings = { language: 'pt', template: 'modern', show_photo: true, labels: {} };
+  let showAbout = false; 
+  let exportStatus = '';
+  let isImportedData = false;
 
   function handleDonate() {
     BrowserOpenURL('https://www.paypal.com/ncp/payment/8V6WQCGN6HDCQ');
@@ -126,10 +128,6 @@
   let newEdu = { id: 0, institution: '', course: '', start_date: '', end_date: '', description: '' };
   let newExp = { id: 0, company: '', position: '', start_date: '', end_date: '', description: '' };
   let newProj = { id: 0, name: '', description: '', url: '' };
-
-  let selectedTemplate = 'modern';
-  let exportStatus = '';
-  let isImportedData = false;
 
   onMount(async () => {
     await loadData();
@@ -638,10 +636,10 @@
                 <button 
                   type="button"
                   class="template-card ripple" 
-                  class:selected={selectedTemplate === t.id}
-                  on:click={() => selectedTemplate = t.id}
+                  class:selected={template === t.id}
+                  on:click={() => template = t.id}
                 >
-                  <div class="template-mockup" style="{t.previewStyle}; border: 2px solid {selectedTemplate === t.id ? t.color : 'transparent'}">
+                  <div class="template-mockup" style="{t.previewStyle}; border: 2px solid {template === t.id ? t.color : 'transparent'}">
                     <div class="mock-header" style="height: 10%; background: {t.color}; opacity: 0.2"></div>
                     <div class="mock-body" style="display: flex; height: 90%; gap: 2px; padding: 2px;">
                         <div class="mock-side" style="width: 30%; background: #f8fafc; opacity: 0.5; border-radius: 1px;"></div>
@@ -652,7 +650,7 @@
                         </div>
                     </div>
                   </div>
-                  <span style="color: {selectedTemplate === t.id ? t.color : '#fff'}">{t.name}</span>
+                  <span style="color: {template === t.id ? t.color : '#fff'}">{t.name}</span>
                 </button>
               {/each}
             </div>
@@ -712,6 +710,13 @@
       </div>
     </div>
   {/if}
+
+  <button class="btn-donate-float ripple" on:click={handleDonate} title={lang === 'pt' ? 'Apoie o projeto' : 'Support the project'}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M14.06 3.713c.12-1.071-.093-1.832-.702-2.526C12.628.356 11.312 0 9.626 0H4.734a.7.7 0 0 0-.691.59L2.005 13.509a.42.42 0 0 0 .415.486h2.756l-.202 1.28a.628.628 0 0 0 .62.726H8.14c.429 0 .793-.31.862-.731l.025-.13.48-3.043.03-.164.001-.007a.35.35 0 0 1 .348-.297h.38c1.266 0 2.425-.256 3.345-.91q.57-.403.993-1.005a4.94 4.94 0 0 0 .88-2.195c.242-1.246.13-2.356-.57-3.154a2.7 2.7 0 0 0-.76-.59l-.094-.061ZM6.543 8.82a.7.7 0 0 1 .321-.079H8.3c2.82 0 5.027-1.144 5.672-4.456l.003-.016q.326.186.548.438c.546.623.679 1.535.45 2.71-.272 1.397-.866 2.307-1.663 2.874-.802.57-1.842.815-3.043.815h-.38a.87.87 0 0 0-.863.734l-.03.164-.48 3.043-.024.13-.001.004a.35.35 0 0 1-.348.296H5.595a.106.106 0 0 1-.105-.123l.208-1.32z"/>
+    </svg>
+    <span>{lang === 'pt' ? 'Apoiar' : 'Support'}</span>
+  </button>
 </main>
 
 <style>
@@ -800,298 +805,36 @@
     color: var(--text-muted) !important;
   }
 
-  .modal-signature {
-    margin-top: 1rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255,255,255,0.05);
-  }
-
-  .sig-name {
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    font-weight: 700;
-    margin-bottom: 0.2rem;
-  }
-
-  .sig-role {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    font-weight: 500;
-  }
-
-  /* Modal Styles */
-  .modal-overlay {
+  .btn-donate-float {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(15, 23, 42, 0.85);
-    backdrop-filter: blur(12px);
-    z-index: 2000;
+    bottom: 2rem;
+    right: 2rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 2rem;
-  }
-
-  .modal-content {
-    max-width: 550px;
-    width: 100%;
-    padding: 3.5rem;
-    position: relative;
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-    text-align: center;
-    background: rgba(30, 41, 59, 0.7);
-  }
-
-  .modal-close {
-    position: absolute;
-    top: 1.2rem;
-    right: 1.2rem;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: var(--text-muted);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .modal-close:hover {
-    color: #fff;
-    background: rgba(255,255,255,0.1);
-    transform: rotate(90deg);
-  }
-
-  /* Text Tools Styling */
-  .text-tools {
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  .text-tools button {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid var(--border-color);
-    color: var(--text-color);
-    padding: 0.2rem 0.6rem;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-
-  .text-tools button:hover {
-    background: rgba(56, 189, 248, 0.1);
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-  }
-
-  .slide-up {
-    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  @keyframes slideUp {
-    from { transform: translateY(40px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-
-  /* Dashboard Styles */
-  .dashboard-view {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    text-align: center;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .dashboard-header h1 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, #fff 0%, #38bdf8 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .dashboard-header p {
-    font-size: 1.25rem;
-    color: var(--text-secondary);
-    margin-bottom: 3rem;
-  }
-
-  .dashboard-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    width: 100%;
-  }
-
-  .dash-card {
-    background: var(--surface-color);
-    border: 1px solid var(--border-color);
-    border-radius: 2rem;
-    padding: 3rem 2rem;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    color: #fff;
-  }
-
-  .dash-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--primary-color);
-    background: rgba(56, 189, 248, 0.05);
-  }
-
-  .dash-card h3 { 
-    color: #ffffff !important; 
-    font-size: 1.5rem;
-    margin: 1rem 0 0.5rem 0;
-  }
-
-  .dash-card p {
-    color: #cbd5e1 !important;
-  }
-
-  .dash-card .icon { font-size: 3rem; }
-
-  /* Wizard Styles */
-  .main-container {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    height: 100vh;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
-
-  .wizard-header { margin-bottom: 2rem; }
-  .header-top { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1rem; }
-  .btn-back-dash { background: none; border: none; color: var(--text-secondary); font-size: 1.5rem; cursor: pointer; }
-
-  .profile-layout { display: flex; gap: 2.5rem; align-items: flex-start; }
-  .photo-section { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; flex-shrink: 0; }
-  .photo-placeholder {
-    width: 160px; height: 160px; border-radius: 1.5rem; background: var(--surface-color); border: 2px dashed var(--border-color);
-    cursor: pointer; overflow: hidden; position: relative; display: flex; justify-content: center; align-items: center;
-  }
-  .photo-placeholder img { width: 100%; height: 100%; object-fit: cover; }
-
-  .form-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .full-width { grid-column: span 2; }
-  .form-group label { display: block; margin-bottom: 0.5rem; color: var(--text-secondary); font-size: 0.9rem; }
-  
-  .glass-panel { padding: 2.5rem; margin-bottom: 2rem; }
-
-  .navigation-btns { display: flex; justify-content: space-between; margin-top: auto; padding-top: 2rem; }
-
-  .item-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(255,255,255,0.03);
-    padding: 1rem;
-    border-radius: 1rem;
-    border: 1px solid var(--border-color);
-    margin-bottom: 0.5rem;
-  }
-
-  .item-actions {
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  .btn-icon {
-    background: none;
+    gap: 0.8rem;
+    background: linear-gradient(135deg, #0070ba 0%, #003087 100%);
+    color: white;
     border: none;
-    font-size: 1.25rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 3rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     cursor: pointer;
-    padding: 0.25rem;
-    transition: transform 0.2s;
-  }
-
-  .btn-icon:hover {
-    transform: scale(1.2);
-  }
-
-  /* Template Selection Styles */
-  .template-selector {
-    text-align: center;
-    padding: 1rem 0;
-  }
-
-  .template-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 2.5rem;
-    padding: 2rem 0;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .template-card {
-    background: var(--surface-color);
-    border: 1px solid var(--border-color);
-    border-radius: 1.5rem;
-    padding: 1.5rem;
-    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 48, 135, 0.4);
+    z-index: 999;
+    opacity: 0.6;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    position: relative;
-    overflow: hidden;
   }
 
-  .template-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--primary-color);
-    background: rgba(56, 189, 248, 0.05);
+  .btn-donate-float:hover {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 48, 135, 0.6);
   }
 
-  .template-card.selected {
-    border-color: var(--primary-color);
-    background: rgba(56, 189, 248, 0.1);
-    box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
-  }
-
-  .template-mockup {
-    width: 100%;
-    aspect-ratio: 1 / 1.4;
-    background: #fff;
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    transition: transform 0.3s;
-  }
-
-  .template-card:hover .template-mockup {
-    transform: scale(1.05);
-  }
-
-  .template-card span {
-    font-weight: 600;
-    font-size: 1.1rem;
-    letter-spacing: 0.5px;
-  }
-
-  @media (max-width: 768px) {
-    .dashboard-grid { grid-template-columns: 1fr; }
-    .profile-layout { flex-direction: column; align-items: center; }
-    .template-grid { grid-template-columns: 1fr; }
+  .btn-donate-float svg {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
   }
 </style>
