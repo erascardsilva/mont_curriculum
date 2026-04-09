@@ -59,7 +59,7 @@ parts:
       
       # Install the binary
       mkdir -p $SNAPCRAFT_PART_INSTALL/bin
-      cp build/bin/Monte-Curriculum $SNAPCRAFT_PART_INSTALL/bin/mont-curriculum
+      cp build/bin/mont_curriculum $SNAPCRAFT_PART_INSTALL/bin/mont-curriculum
       
       # Copy GUI assets
       mkdir -p $SNAPCRAFT_PART_INSTALL/gui
