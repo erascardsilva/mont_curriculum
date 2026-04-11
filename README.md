@@ -1,4 +1,4 @@
-# 📄 Monte Curriculum
+#  Monte Curriculum
 
 **Elevate your professional career with premium, high-impact resumes.**
 
@@ -6,14 +6,14 @@ Monte Curriculum is a state-of-the-art desktop application built with **Wails**,
 
 ---
 
-## 🚀 Key Features
+##  Key Features
 
-- **🛡️ Intelligent Wizard**: A guided 7-step process to ensure no critical information is missed.
-- **📥 Smart Resume Import**: Advanced parsing to import data from existing PDF or Word files.
-- **🎨 Premium Templates**: Select from high-end, designer-made layouts.
-- **📈 Pro Exports**: Export your resume in professional PDF (Print Ready) or fully editable DOCX formats.
-- **🌐 International Ready**: Full support for both **English** and **Portuguese** (BR).
-- **✨ Modern UI**: Create high-impact professional resumes with a modern glassmorphism interface.
+- **Intelligent Wizard**: A guided 7-step process to ensure no critical information is missed.
+- **Smart Resume Import**: Advanced parsing to import data from existing PDF or Word files.
+- **Premium Templates**: Select from high-end, designer-made layouts.
+- **Pro Exports**: Export your resume in professional PDF (Print Ready) or fully editable DOCX formats.
+- **International Ready**: Full support for both **English** and **Portuguese** (BR).
+- **Modern UI**: Create high-impact professional resumes with a modern glassmorphism interface.
 
 ![Go](https://img.shields.io/badge/Go-1.22+-00ADD8?style=for-the-badge&logo=go&logoColor=white)
 ![Wails](https://img.shields.io/badge/Wails-v2-E94132?style=for-the-badge&logo=wails&logoColor=white)
@@ -25,19 +25,19 @@ Monte Curriculum is a state-of-the-art desktop application built with **Wails**,
 
 ---
 
-## ⬇️ Installation
+## Installation
 
-### 🐧 Linux (Recommended)
+###  Linux (Recommended)
 Install the official package directly from the Snap Store:
 ```bash
 sudo snap install mont-curriculum
 ```
 
-### 🪟 Windows
+### Windows
 1. Download the latest `Monte-Curriculum-Installer.exe` from the [Releases](https://github.com/erascardsilva/mont_curriculum/releases) page or the `build/bin/` folder.
 2. Run the installer and follow the on-screen instructions.
 
-### 🛠️ Developer Build (From Source)
+###  Developer Build (From Source)
 If you have the Go and Wails environment setup:
 ```bash
 # Clone the repository
@@ -61,9 +61,9 @@ This application is completely free and open-source. If you find it useful, cons
 
 ---
 
-## ✒️ Author
+##  Author
 
-**[Erasmo Cardoso](https://github.com/erascardsilva)**  
+**Erasmo Cardoso**  
 *Software Engineer | Electronics Specialist*
 
 ---
