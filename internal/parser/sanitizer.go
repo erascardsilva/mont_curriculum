@@ -8,7 +8,7 @@ import (
 
 /*
  * Project: Monte Curriculum
- * Author: Erasmo Cardoso - Software Engineer | Electronics Specialist
+ * Author: Erasmo Cardoso - Software Engineer | Electronics Techniciant
  */
 
 // Sanitize aplica regras gramaticalmente estritas para limpar o texto.

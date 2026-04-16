@@ -713,7 +713,7 @@
 
         <div class="modal-signature">
            <div class="sig-name">Erasmo Cardoso</div>
-           <div class="sig-role">Software Engineer | Electronics Specialist</div>
+           <div class="sig-role">Software Engineer | Electronics Techniciant</div>
         </div>
       </div>
     </div>

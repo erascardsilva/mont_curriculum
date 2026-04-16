@@ -64,7 +64,7 @@ This application is completely free and open-source. If you find it useful, cons
 ##  Author
 
 **Erasmo Cardoso**  
-*Software Engineer | Electronics Specialist*
+*Software Engineer | Electronics Techniciant*
 
 ---
 © 2026 Monte Curriculum. All rights reserved.

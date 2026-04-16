@@ -2,7 +2,7 @@ package exporter
 
 /*
  * Project: Monte Curriculum
- * Author: Erasmo Cardoso - Software Engineer | Electronics Specialist
+ * Author: Erasmo Cardoso - Software Engineer | Electronics Techniciant
  */
 
 import (
