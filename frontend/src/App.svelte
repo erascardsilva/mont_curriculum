@@ -548,6 +548,26 @@
                     <label for="pos">{lang === 'pt' ? 'Cargo' : 'Title'}</label>
                     <input id="pos" type="text" bind:value={newExp.position} on:blur={() => newExp.position = sanitizeJS(newExp.position)} />
                   </div>
+                  <div class="form-group">
+                    <label for="exp_start">{lang === 'pt' ? 'Data Inicial' : 'Start Date'}</label>
+                    <input id="exp_start" type="text" bind:value={newExp.start_date} placeholder="Ex: Jan/2020" />
+                  </div>
+                  <div class="form-group">
+                    <label for="exp_end">{lang === 'pt' ? 'Data Final' : 'End Date'}</label>
+                    <input id="exp_end" type="text" bind:value={newExp.end_date} disabled={newExp.end_date === 'Atual' || newExp.end_date === 'Present'} placeholder="Ex: Out/2022" />
+                  </div>
+                  <div class="form-group full-width">
+                    <div class="checkbox-group" on:click={() => {
+                      if (newExp.end_date === 'Atual' || newExp.end_date === 'Present') {
+                        newExp.end_date = '';
+                      } else {
+                        newExp.end_date = lang === 'pt' ? 'Atual' : 'Present';
+                      }
+                    }}>
+                      <input type="checkbox" id="current_work" checked={newExp.end_date === 'Atual' || newExp.end_date === 'Present'} />
+                      <label for="current_work">{lang === 'pt' ? 'Trabalho Atual' : 'Current Work'}</label>
+                    </div>
+                  </div>
                   <div class="form-group full-width">
                     <div class="label-edit">
                       <label for="exp_desc">{lang === 'pt' ? 'Descrição das Atividades' : 'Job Description'}</label>
@@ -598,7 +618,7 @@
                    </div>
                    <div class="form-group full-width">
                        <label for="purl">{lang === 'pt' ? 'Link do Projeto (URL)' : 'Project Link (URL)'}</label>
-                       <input id="purl" type="url" bind:value={newProj.url} on:blur={() => newProj.url = sanitizeJS(newProj.url)} placeholder="https://..." />
+                       <input id="purl" type="url" bind:value={newProj.url} placeholder="https://..." />
                    </div>
                    <div class="form-group full-width">
                      <div class="label-edit">
@@ -1138,5 +1158,25 @@
 
   .btn-donate-top svg {
     filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
+  }
+
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    user-select: none;
+    padding: 0.5rem 0;
+  }
+  .checkbox-group input {
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+  }
+  .checkbox-group label {
+    margin: 0 !important;
+    cursor: pointer;
+    color: var(--text-primary) !important;
   }
 </style>
